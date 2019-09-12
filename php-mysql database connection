@@ -1,0 +1,20 @@
+<?php
+	$host="localhost"; //yout host name  
+	$username="root";  //yout user name  
+	$password="";      // your password  
+	$db_name="db_student";  // your database name  
+	
+	$con=mysql_connect("$host", "$username", "$password")or die("cannot connect"); //mysql connection  
+	mysql_select_db("$db_name")or die("can not select DB"); //select your database  
+	
+	//execute the SQL query and return records
+	$query="SELECT stu_name, stu_gender FROM stu_info";
+	$result = mysql_query($query);
+	
+	//fetch tha data from the database 
+	while ($row = mysql_fetch_array($result)){
+	   echo $row['stu_name'].' '.$row['stu_gender'].'<br>';
+	}
+	//close the connection
+	mysql_close();
+?>
